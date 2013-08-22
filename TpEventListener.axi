@@ -29,7 +29,7 @@ define_event
 #IF_DEFINED INCLUDE_TP_NFC_TAG_READ_CALLBACK
 custom_event[dvTp.number:1:dvTp.system,
 		TP_CUSTOM_EVENT_NFC,
-		NFC_EVENT_TAG_READ] {
+		TP_NFC_EVENT_TAG_READ] {
 	stack_var integer tagType;
 	stack_var integer dataType;
 	stack_var integer dataLength;
@@ -39,10 +39,10 @@ custom_event[dvTp.number:1:dvTp.system,
 	dataLength = type_cast(custom.value3);
 
 	switch (dataType) {
-		case NFC_DATA_TYPE_UID:{
+		case TP_NFC_DATA_TYPE_UID:{
 			NfcTagRead(tagType, custom.text, dataLength);
 		}
-		case NFC_DATA_TYPE_CARD_DATA: {
+		case TP_NFC_DATA_TYPE_CARD_DATA: {
 			// not implemented in current firmware
 		}
 	}
