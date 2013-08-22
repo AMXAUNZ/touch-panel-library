@@ -148,6 +148,17 @@ define_function setButtonText(dev tp, integer address, char text[]) {
 }
 
 /**
+ * Set the image resource used by a button.
+ *
+ * @param	tp			the device containing the button
+ * @param	address		the button address
+ * @param	name		the name of the image to use
+ */
+define_function setButtonImage(dev tp, integer address, char name[]) {
+	send_command tp, "'^BMP-', itoa(address), ',0,', name";
+}
+
+/**
  * Plays a sounds file embedded within the TP4 file.
  *
  * @param	name		the name of the sound file to play
