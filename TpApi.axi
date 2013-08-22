@@ -1,8 +1,8 @@
 PROGRAM_NAME = 'TpApi'
 
 
-#IF_NOT_DEFINED __TP_EVENT_LISTENER__
-#DEFINE __TP_EVENT_LISTENER__
+#IF_NOT_DEFINED __TP_API__
+#DEFINE __TP_API__
 
 
 define_constant
@@ -152,10 +152,9 @@ define_function setButtonText(dev tp, integer address, char text[]) {
  *
  * @param	name		the name of the sound file to play
  */
- define_function playSound(dev tp, char soundName[]) {
+define_function playSound(dev tp, char soundName[]) {
 	send_command tp, "'@SOU-', soundName";
- }
+}
 
 
-
-#END_IF
+#END_IF //__TP_API__
