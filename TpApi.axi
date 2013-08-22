@@ -72,7 +72,7 @@ define_function hidePopupEx(dev tp, char popupName[], char pageName[]) {
  * @param	tp			the device to set the page of
  * @param	name		the name of the page to show
  */
-define_function setPage(dev tp[], char name[]) {
+define_function setPage(dev tp, char name[]) {
 	send_command tp, "'PAGE-', name";
 }
 
