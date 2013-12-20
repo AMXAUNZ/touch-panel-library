@@ -159,6 +159,47 @@ define_function setButtonImage(dev tp, integer address, char name[]) {
 }
 
 /**
+ * Set the button enabled state.
+ *
+ * @param	tp			the device containing the button
+ * @param	address		the button address
+ * @param	state		a boolean, true if the button should be enabled
+ */
+define_function setButtonEnabled(dev tp, integer address, char state) {
+	send_command tp, "'^ENA-', itoa(address), ',', itoa(state)";
+}
+
+/**
+ * Set the button enabled state.
+ *
+ * @param	tp			the device containing the button
+ * @param	address		the button address
+ * @param	opacity		the opacity to set [0..255]
+ */
+define_function setButtonOpacity(dev tp, integer address, char opacity) {
+	send_command tp, "'^BOP-', itoa(address), ',0,', itoa(opacity)";
+}
+
+/**
+ * Set the button faded state. This will decrease the element opactiy by 50%
+ * when activated.
+ *
+ * Note: when re-enabled element opacity will be set to 100%, regarless of the
+ * previous value.
+ *
+ * @param	tp			the device containing the button
+ * @param	address		the button address
+ * @param	state		a boolean, true if the button should be enabled
+ */
+define_function setButtonFaded(dev tp, integer address, char state) {
+	if (state) {
+		setButtonOpacity(tp, address, 127);
+	} else {
+		setButtonOpacity(tp, address, 255);
+	}
+}
+
+/**
  * Plays a sounds file embedded within the TP4 file.
  *
  * @param	name		the name of the sound file to play
