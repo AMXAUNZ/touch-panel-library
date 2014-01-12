@@ -67,6 +67,28 @@ define_function hidePopupEx(dev tp, char popupName[], char pageName[]) {
 }
 
 /**
+ * Shows a subpage.
+ *
+ * @param	tp			the device to show the subpage on
+ * @param	address		the subpage view button address
+ * @param	popupName	the name of the subpage to show
+ */
+define_function showSubPage(dev tp, integer address, char subPageName[]) {
+	send_command tp, "'^SSH-', itoa(address), ',', subPageName";	
+}
+
+/**
+ * Hides a subpage.
+ *
+ * @param	tp			the device to hide the subpage on
+ * @param	address		the subpage view button address
+ * @param	popupName	the name of the subpage to hide
+ */
+define_function hideSubPage(dev tp, integer address, char subPageName[]) {
+	send_command tp, "'^SHD-', itoa(address), ',', subPageName";	
+}
+
+/**
  * Sets the currently displayed page on a touch panel.
  *
  * @param	tp			the device to set the page of
