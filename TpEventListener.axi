@@ -20,6 +20,13 @@ compiler directive is declared prio to the inclusion of this axi.
 // #DEFINE INCLUDE_TP_NFC_TAG_READ_CALLBACK
 define_function NfcTagRead(integer tagType, char uid[], integer uidLength) {}
 
+/**
+ * Called when dynamic resource loads.
+ */
+// #DEFINE INCLUDE_RESOURCE_LOAD_CALLBACK
+define_function TpResourceLoaded(char name[]) {}
+
+
 */
 
 
@@ -46,6 +53,15 @@ custom_event[dvTp.number:1:dvTp.system,
 			// not implemented in current firmware
 		}
 	}
+
+}
+#END_IF
+
+#IF_DEFINED INCLUDE_RESOURCE_LOAD_CALLBACK
+custom_event[dvTp.number:1:dvTp.system,
+		0,
+		TP_CUSTOM_EVENT_RESOURCE_LOAD] {
+	TpResourceLoaded(custom.text);
 
 }
 #END_IF

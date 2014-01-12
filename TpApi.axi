@@ -8,7 +8,8 @@ PROGRAM_NAME = 'TpApi'
 define_constant
 
 // Touch panel custom event addresses
-TP_CUSTOM_EVENT_NFC = 1
+TP_CUSTOM_EVENT_NFC = 1;
+TP_CUSTOM_EVENT_RESOURCE_LOAD = 1400;
 
 // NFC custom events
 TP_NFC_EVENT_TAG_READ = 700;
@@ -74,7 +75,7 @@ define_function hidePopupEx(dev tp, char popupName[], char pageName[]) {
  * @param	popupName	the name of the subpage to show
  */
 define_function showSubPage(dev tp, integer address, char subPageName[]) {
-	send_command tp, "'^SSH-', itoa(address), ',', subPageName";	
+	send_command tp, "'^SSH-', itoa(address), ',', subPageName";
 }
 
 /**
@@ -85,7 +86,7 @@ define_function showSubPage(dev tp, integer address, char subPageName[]) {
  * @param	popupName	the name of the subpage to hide
  */
 define_function hideSubPage(dev tp, integer address, char subPageName[]) {
-	send_command tp, "'^SHD-', itoa(address), ',', subPageName";	
+	send_command tp, "'^SHD-', itoa(address), ',', subPageName";
 }
 
 /**
